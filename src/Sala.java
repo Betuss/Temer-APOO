@@ -8,6 +8,7 @@ public class Sala {
 	private int temperaturaAtual;
 	private int quantidadeAr;
 	private ArrayList<ArCondicionado> listaAr;
+	private ArrayList<Agendamento> listaAgendamentos;
 	
 	public Sala(int identificador, int temperatura, int quantidadeAr) {
 		super();
@@ -19,18 +20,24 @@ public class Sala {
 		for(int i = 1; i <= quantidadeAr; i++){
 			listaAr.add(new ArCondicionado(i));
 		}
+		listaAgendamentos = new ArrayList<Agendamento>();
 	}
 	
 	public String toString(){
 		String retorno = "";
 		
 		retorno += "[ID da sala: " + identificador + " | Temperatura ideal: " + temperaturaIdeal + "] ";
-		retorno += "Quantidade de pessoas: " + String.format("%02d",quantidadePessoas) + " | ";
-		for(ArCondicionado ar : listaAr){
+		retorno += "Quantidade de pessoas: " + String.format("%02d", quantidadePessoas) + " | ";
+		/*for(ArCondicionado ar : listaAr){
 			retorno += ar;
-		}
+		}*/
+		retorno += listaAr.get(0);
 		
 		return retorno;
+	}
+	
+	public void adicionarAgendamento(int dia, int horaInicio, int minutoInicio, int horaFim, int minutoFim){
+		listaAgendamentos.add(new Agendamento(identificador, dia, horaInicio, minutoInicio, horaFim, minutoFim));
 	}
 	
 	public void ligarAres(){
@@ -47,6 +54,9 @@ public class Sala {
 	
 	public void sairPessoas(int quantidade){
 		quantidadePessoas -= quantidade;
+		if(quantidadePessoas < 0){
+			quantidadePessoas = 0;
+		}
 		calcularNovaTemperatura();
 	}
 	
@@ -100,5 +110,8 @@ public class Sala {
 		this.listaAr = listaAr;
 	}
 	
+	public ArrayList<Agendamento> getListaAgendamentos(){
+		return listaAgendamentos;
+	}
 	
 }
