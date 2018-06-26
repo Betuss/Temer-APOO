@@ -21,17 +21,17 @@ public class Agenda {
 	private ArrayList<Agendamento> agendamentosSexta;
 	
 	public Agenda(){
-		agendamentosSabado = new ArrayList<Agendamento>();
-		agendamentosDomingo = new ArrayList<Agendamento>();
-		agendamentosSegunda = new ArrayList<Agendamento>();
-		agendamentosTerca = new ArrayList<Agendamento>();
-		agendamentosQuarta = new ArrayList<Agendamento>();
-		agendamentosQuinta = new ArrayList<Agendamento>();
-		agendamentosSexta = new ArrayList<Agendamento>();
+		agendamentosSabado = new ArrayList<>();
+		agendamentosDomingo = new ArrayList<>();
+		agendamentosSegunda = new ArrayList<>();
+		agendamentosTerca = new ArrayList<>();
+		agendamentosQuarta = new ArrayList<>();
+		agendamentosQuinta = new ArrayList<>();
+		agendamentosSexta = new ArrayList<>();
 	}
 	
 	public void adicionarAgendamento(Agendamento agendamento){
-		switch(agendamento.getDia()){
+            switch(agendamento.getDia()){
 		case 0:
 			agendamentosSabado.add(agendamento);
 			break;
@@ -57,33 +57,35 @@ public class Agenda {
 			break;
 		}
 	}
-
-	public ArrayList<Agendamento> getAgendamentosSabado() {
-		return agendamentosSabado;
-	}
-
-	public ArrayList<Agendamento> getAgendamentosDomingo() {
-		return agendamentosDomingo;
-	}
-
-	public ArrayList<Agendamento> getAgendamentosSegunda() {
-		return agendamentosSegunda;
-	}
-
-	public ArrayList<Agendamento> getAgendamentosTerca() {
-		return agendamentosTerca;
-	}
-
-	public ArrayList<Agendamento> getAgendamentosQuarta() {
-		return agendamentosQuarta;
-	}
-
-	public ArrayList<Agendamento> getAgendamentosQuinta() {
-		return agendamentosQuinta;
-	}
-
-	public ArrayList<Agendamento> getAgendamentosSexta() {
-		return agendamentosSexta;
+        
+        public ArrayList<Agendamento> getAgendamentos(int dia){
+            ArrayList<Agendamento> listaRetorno = new ArrayList<>();
+            switch(dia){
+		case 0:
+			listaRetorno = agendamentosSabado;
+			break;
+		case 1:
+			listaRetorno = agendamentosDomingo;
+			break;
+		case 2:
+			listaRetorno = agendamentosSegunda;
+			break;
+		case 3:
+			listaRetorno = agendamentosTerca;
+			break;
+		case 4:
+			listaRetorno = agendamentosQuarta;
+			break;
+		case 5:
+			listaRetorno = agendamentosQuinta;
+			break;
+		case 6:
+			listaRetorno = agendamentosSexta;
+			break;
+		default:
+			break;
+		}
+            return listaRetorno;
 	}
 	
 }

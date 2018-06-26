@@ -13,7 +13,9 @@ import java.util.ArrayList;
  */
 public class Sala {
     
-   
+   Tela tela = new Tela(); 
+
+       
     
         private int identificador;
 	private int quantidadePessoas;
@@ -23,6 +25,7 @@ public class Sala {
         private String identificadorJ;
 	private ArrayList<ArCondicionado> listaAr;
 	private ArrayList<Agendamento> listaAgendamentos;
+        private boolean aresLigados;
 	
 	public Sala(int identificador, int temperatura, int quantidadeAr) {
 		super();
@@ -35,6 +38,8 @@ public class Sala {
 			listaAr.add(new ArCondicionado(i));
 		}
 		listaAgendamentos = new ArrayList<Agendamento>();
+                aresLigados = false;
+                
 	}
 	
 	public String toString(){
@@ -48,19 +53,38 @@ public class Sala {
 		}*/
 		retorno += listaAr.get(0);
 		
+                
+                
 		return retorno;
 	}
 	
 	public void adicionarAgendamento(int dia, int horaInicio, int minutoInicio, int horaFim, int minutoFim){
-		listaAgendamentos.add(new Agendamento(identificador, dia, horaInicio, minutoInicio, horaFim, minutoFim));
+		listaAgendamentos.add(new Agendamento(this, dia, horaInicio, minutoInicio, horaFim, minutoFim));
 	}
 	
 	public void ligarAres(){
+            if(!aresLigados){
 		for(ArCondicionado ar : listaAr){
 			ar.ligar(temperaturaIdeal);
 		}
 		temperaturaAtual = temperaturaIdeal;
+                aresLigados = true;
+            }
 	}
+	
+	public void desligarAres(){
+            if(aresLigados){
+		for(ArCondicionado ar : listaAr){
+			ar.desligar();
+		}
+		temperaturaAtual = 30;
+                aresLigados = false;
+            }
+	}
+        
+        public boolean isAresLigados(){
+            return aresLigados;
+        }
 	
 	public void entrarPessoas(int quantidade){
 		quantidadePessoas += quantidade;
@@ -89,6 +113,49 @@ public class Sala {
 		return 1;
 	}
 	
+        public boolean temAgendamentoProx30Minutos(int horaAtual, int minutoAtual){
+            for(Agendamento agendamento : listaAgendamentos){
+                if(isProx30Minutos(horaAtual, minutoAtual, agendamento.getHoraInicio(), agendamento.getMinutoInicio())){
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        public void esvaziarCasoTenhaTerminado(int horaAtual, int minutoAtual){
+            for(Agendamento agendamento : listaAgendamentos){
+                //System.out.println("If( " + horaAtual + " == " + agendamento.getHoraFim() + " && " + minutoAtual + " == " + agendamento.getMinutoFim() +");");
+                if(horaAtual == agendamento.getHoraFim() && minutoAtual == agendamento.getMinutoFim()){
+                    //System.out.println("\nTerminei\n");
+                    quantidadePessoas = 0;
+                }
+            }
+        }
+        
+        public void popularAoComecar(int horaAtual, int minutoAtual){
+            for(Agendamento agendamento : listaAgendamentos){
+                if(horaAtual == agendamento.getHoraInicio() && minutoAtual == agendamento.getMinutoInicio()){
+                    quantidadePessoas = 10;
+                }
+            }
+        }
+        
+        public boolean isProx30Minutos(int horaAtual, int minutoAtual, int horaAgendamento, int minutoAgendamento){
+        if(horaAgendamento == horaAtual){
+            if(minutoAgendamento - minutoAtual <= 30){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if(horaAtual == horaAgendamento - 1 && minutoAtual - minutoAgendamento <= 30){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+        
 	public int getIdentificador(){
 		return identificador;
 	}

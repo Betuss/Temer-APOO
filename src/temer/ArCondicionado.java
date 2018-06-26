@@ -17,7 +17,7 @@ public class ArCondicionado {
 	public ArCondicionado(int identificador){
 		this.identificador = identificador;
 		ligado = false;
-		temperatura = 0;
+		temperatura = 30;
 	}
 	
 	public String toString(){

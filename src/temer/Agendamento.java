@@ -10,68 +10,68 @@ package temer;
  * 
  */
 public class Agendamento {
-    private int identificadorSala;
-	private int dia;
-	private int horaInicio;
-	private int minutoInicio;
-	private int horaFim;
-	private int minutoFim;
-	
-	public Agendamento(int identificadorSala, int dia, int horaInicio, int minutoInicio, int horaFim, int minutoFim) {
-		this.identificadorSala = identificadorSala;
-		this.dia = dia;
-		this.horaInicio = horaInicio;
-		this.minutoInicio = minutoInicio;
-		this.horaFim = horaFim;
-		this.minutoFim = minutoFim;
-	}
-	
-	public int getIdentificadorSala(){
-		return identificadorSala;
-	}
-	
-	public void setIdentificadorSala(int identificadorSala){
-		this.identificadorSala = identificadorSala;
-	}
+    private Sala sala;
+    private int dia;
+    private int horaInicio;
+    private int minutoInicio;
+    private int horaFim;
+    private int minutoFim;
 
-	public int getDia() {
-		return dia;
-	}
+    public Agendamento(Sala sala, int dia, int horaInicio, int minutoInicio, int horaFim, int minutoFim) {
+            this.sala = sala;
+            this.dia = dia;
+            this.horaInicio = horaInicio;
+            this.minutoInicio = minutoInicio;
+            this.horaFim = horaFim;
+            this.minutoFim = minutoFim;
+    }
 
-	public void setDia(int dia) {
-		this.dia = dia;
-	}
+    public Sala getSala(){
+            return sala;
+    }
 
-	public int getHoraInicio() {
-		return horaInicio;
-	}
+    public void setSala(Sala sala){
+            this.sala = sala;
+    }
 
-	public void setHoraInicio(int horaInicio) {
-		this.horaInicio = horaInicio;
-	}
+    public int getDia() {
+            return dia;
+    }
 
-	public int getMinutoInicio() {
-		return minutoInicio;
-	}
+    public void setDia(int dia) {
+            this.dia = dia;
+    }
 
-	public void setMinutoInicio(int minutoInicio) {
-		this.minutoInicio = minutoInicio;
-	}
+    public int getHoraInicio() {
+            return horaInicio;
+    }
 
-	public int getHoraFim() {
-		return horaFim;
-	}
+    public void setHoraInicio(int horaInicio) {
+            this.horaInicio = horaInicio;
+    }
 
-	public void setHoraFim(int horaFim) {
-		this.horaFim = horaFim;
-	}
+    public int getMinutoInicio() {
+            return minutoInicio;
+    }
 
-	public int getMinutoFim() {
-		return minutoFim;
-	}
+    public void setMinutoInicio(int minutoInicio) {
+            this.minutoInicio = minutoInicio;
+    }
 
-	public void setMinutoFim(int minutoFim) {
-		this.minutoFim = minutoFim;
-	}
+    public int getHoraFim() {
+            return horaFim;
+    }
+
+    public void setHoraFim(int horaFim) {
+            this.horaFim = horaFim;
+    }
+
+    public int getMinutoFim() {
+            return minutoFim;
+    }
+
+    public void setMinutoFim(int minutoFim) {
+            this.minutoFim = minutoFim;
+    }
 	
 }
