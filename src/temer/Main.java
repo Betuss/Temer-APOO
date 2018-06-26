@@ -5,6 +5,7 @@
  */
 package temer;
 
+import java.awt.Color;
 import java.util.Random;
 import java.util.ArrayList;
 import javax.swing.JTextField;
@@ -37,6 +38,7 @@ public class Main {
         
         Tela tela = new Tela(); 
         tela.setVisible(true);
+        
         Random gerador = new Random();
         Sistema sistema = new Sistema();
         Sala sala;
@@ -110,45 +112,6 @@ public class Main {
 
             String identificadorJ = Integer.toString(sistema.getListaSalas().get(0).getIdentificador());
             tela.JidSala.setText(identificadorJ);
-         
-            String temperaturaAtualJ = Integer.toString(sistema.getListaSalas().get(0).getTemperaturaAtual());
-            if( !"0".equals(temperaturaAtualJ)){
-                tela.jtemperatura.setText(temperaturaAtualJ);
-            }
-            
-            if( "30".equals(temperaturaAtualJ)){
-                tela.jtemperatura.setText("-");
-            }
-            String temperaturaAtualJ1 = Integer.toString(sistema.getListaSalas().get(1).getTemperaturaAtual());
-             if( !"0".equals(temperaturaAtualJ1)){
-                tela.jtemperatura1.setText(temperaturaAtualJ1);
-             }
-            if( "30".equals(temperaturaAtualJ1)){
-                tela.jtemperatura1.setText("-");
-            }
-            String temperaturaAtual = Integer.toString(sistema.getListaSalas().get(2).getTemperaturaAtual());
-             if( !"0".equals(temperaturaAtual)){    
-                tela.jtemperatura2.setText(temperaturaAtual);
-             }
-            if( "30".equals(temperaturaAtual)){
-                tela.jtemperatura2.setText("-");
-            }
-            String temperaturaAtualJ3 = Integer.toString(sistema.getListaSalas().get(3).getTemperaturaAtual());
-             if( !"0".equals(temperaturaAtualJ3)){    
-                tela.jtemperatura3.setText(temperaturaAtualJ3);
-             }
-            if( "30".equals(temperaturaAtualJ3)){
-                tela.jtemperatura3.setText("-");
-            }
-            
-            String temperaturaAtualJ2 = Integer.toString(sistema.getListaSalas().get(4).getTemperaturaAtual());
-             if( !"0".equals(temperaturaAtualJ2)){    
-                tela.jtemperatura4.setText(temperaturaAtualJ2);
-             }
-             
-            if( "30".equals(temperaturaAtualJ2)){
-                tela.jtemperatura4.setText("-");
-            }
             
             String pessoas = Integer.toString(sistema.getListaSalas().get(0).getQuantidadePessoas());
             tela.pessoas.setText(pessoas);
@@ -164,6 +127,63 @@ public class Main {
             
             String pessoas4 = Integer.toString(sistema.getListaSalas().get(4).getQuantidadePessoas());
             tela.pessoas4.setText(pessoas4);
+            
+            String temperaturaAtualJ = Integer.toString(sistema.getListaSalas().get(0).getTemperaturaAtual());
+            if( !"0".equals(temperaturaAtualJ)){
+                tela.jtemperatura.setText(temperaturaAtualJ+"°");
+               
+            }
+            
+            if( "30".equals(temperaturaAtualJ)){
+                tela.jtemperatura.setText("-");
+               
+                tela.pessoas.setText("0");
+                
+            }
+            String temperaturaAtualJ1 = Integer.toString(sistema.getListaSalas().get(1).getTemperaturaAtual());
+             if( !"0".equals(temperaturaAtualJ1)){
+                tela.jtemperatura1.setText(temperaturaAtualJ1+"°");
+                
+             }
+            if( "30".equals(temperaturaAtualJ1)){
+                tela.jtemperatura1.setText("-");
+                
+                tela.pessoas1.setText("0");
+            }
+            String temperaturaAtual = Integer.toString(sistema.getListaSalas().get(2).getTemperaturaAtual());
+             if( !"0".equals(temperaturaAtual)){    
+                tela.jtemperatura2.setText(temperaturaAtual+"°");
+                
+             }
+            if( "30".equals(temperaturaAtual)){
+                tela.jtemperatura2.setText("-");
+                
+                tela.pessoas2.setText("0");
+            }
+            String temperaturaAtualJ3 = Integer.toString(sistema.getListaSalas().get(3).getTemperaturaAtual());
+             if( !"0".equals(temperaturaAtualJ3)){    
+                tela.jtemperatura3.setText(temperaturaAtualJ3+"°");
+                
+             }
+            if( "30".equals(temperaturaAtualJ3)){
+                tela.jtemperatura3.setText("-");
+                
+                tela.pessoas3.setText("0");
+            }
+            
+            String temperaturaAtualJ2 = Integer.toString(sistema.getListaSalas().get(4).getTemperaturaAtual());
+             if( !"0".equals(temperaturaAtualJ2)){    
+                tela.jtemperatura4.setText(temperaturaAtualJ2+"°");
+               
+             }
+             
+            if( "30".equals(temperaturaAtualJ2)){
+                tela.jtemperatura4.setText("-");
+              
+                tela.pessoas4.setText("0");
+            }
+            
+            
             
             try { 
                 Thread.sleep (500); // Espera 0,5s para dar as saídas, fica melhor pra enxergar as mudanças
